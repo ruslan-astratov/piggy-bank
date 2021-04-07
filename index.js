@@ -1,3 +1,7 @@
+import moment from 'moment';
+moment().format();
+console.log(moment().format())
+
 let goalName = document.querySelector('#goal-name');
 let sumRequired = document.querySelector('#sum-required');
 let period = document.querySelector('#period');
@@ -16,9 +20,11 @@ function calcMonths () {
     let end = period.innerHTML;
     let a = moment(start, "YYYY-MM");
     let b = moment(end, "YYYY-MM");
-    if (b.isBefore(a.startOf('month'))) {
-        return 'Invalid Date'
-    }
     let  months = b.diff(a, 'month') ;
+    if (months > 0) {
+        console.log(months) 
     return months;
+    } else {
+        alert('Введите корректную дату')
+    }  
 }
