@@ -1,6 +1,6 @@
 import moment from 'moment';
-moment().format();
-console.log(moment().format())
+// moment().format();
+// console.log(moment().format())
 
 let goalName = document.querySelector('#goal-name');
 let sumRequired = document.querySelector('#sum-required');
@@ -12,19 +12,19 @@ let formSaveBtn = document.querySelector('#form-save-btn');
 let formCancelBtn = document.querySelector('#form-cancel-btn');
 
 
-// Написать функцию  которая возвращает количество месяцев от сегодняшнего дня до введенной даты. 
+// Написать функцию  которая возвращает количество месяцев от текущего дня до введенного месяца. 
 // Ограничить ввод даты из прошлого
-
-function calcMonths () {
+function calcMonths() {
 
     let start =  moment().format('YYYY-MM')
-    let end = period.innerHTML;
+    let end = period.value;
     let a = moment(start, "YYYY-MM");
     let b = moment(end, "YYYY-MM");
-    let  months = b.diff(a, 'month') ;
+    let  months = b.diff(a, 'month');
+
     if (months > 0) {
         console.log(months) 
-    return months;
+        return months;
     } else {
         alert('Введите корректную дату')
     }  
@@ -36,10 +36,13 @@ function calcMonths () {
 // Функция, которая проверяет - заполнены ли все 5 инпутов. Функция срабатывает при изменении в каждом из пяти инпутов
 function isEmptyInputs() {
 
-  if( goalName.value.trim() !== "" && sumRequired.value.trim() !== "" && period.value.trim() !== "" && initialSum.value.trim() !== ""&& percent.value.trim() !== "") {
+  if( goalName.value.trim() !== "" && sumRequired.value.trim() !== "" && period.value.trim() !== "" && period.value.length >= 6 && initialSum.value.trim() !== ""&& 
+      percent.value.trim() !== "") {
 
     console.log("Все поля заполнены" )
 
+
+    // calcMonths()
 
     // Теперь здесь запускаем функцию , которая РАССЧИТЫВАЕТ размер ежемесячного пополнения   и  ВЫВОДИТ его , как результат,   в инпут   monthlyPayment
     calculatedSumOfPaymant()
@@ -60,10 +63,10 @@ function isEmptyInputs() {
 
 
 // Функция, которая берёт значения 4 инпутов (требуемая сумма, период, начальная сумма, процент)   и на их основе рассчитывает размер ежемесячного платежа и выводит его в инпут monthlyPayment
-function calculatedSumOfPaymant(someMonth) {
+function calculatedSumOfPaymant() {
 
 
-  // let someMonth = 6
+  let someMonth = calcMonths()
 
 
   // Итоговый доход (берём его из инпута sumRequired "Требуемая сумма"  ). Допустим 80 000 р
