@@ -1,8 +1,21 @@
-let goalName = document.querySelector('#goalName');
-let sumRequired = document.querySelector('#sumRequired');
-let period = document.querySelector('#period');
-let initialSum = document.querySelector('#initialSum');
-let percent = document.querySelector('#percent');
-let monthlyPayment = document.querySelector('#monthlyPayment');
-let formSaveBtn = document.querySelector('#formSaveBtn');
-let formCancelBtn = document.querySelector('#formCancelBtn');
+// Как получить интвервал между датами
+
+//  С какого месяца.   Например, с января
+var start = "2021-01";
+
+// До  какого месяца   (не включая этот месяц).    Например, до июня
+var end = "2021-06";
+
+
+// Парсим данные  с помощью moment-а
+var a = moment(start, "YYYY-MM");
+var b = moment(end, "YYYY-MM");
+
+// получаем количество месяцев  между датами
+var month = b.diff(a, 'month') ;
+
+
+console.log(month)
+
+
+
