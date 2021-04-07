@@ -12,9 +12,14 @@
 </head>
 <body>
   <div class="wrapper">
-    <form id="goal-form" class="block">
-      <h1 id="form-header">Накопить на мечту</h1>
-      <div class="block-for-inputs"></div>
+    
+    <form id="goal-form" class="block-wrapper">
+      <h1 class="header">Накопить на мечту</h1>
+      <div class="box-for-form block">
+      <div class="block-for-inputs">
+        <div class="header-in-form">
+          <h3>Создать цель</h3>
+        </div>
       <label class="form-label main-input-label">
         Название цели:
         <input id="goal-name" class="form-input main-input" type="text" name="goal-name">
@@ -46,19 +51,20 @@
       </label>
     </div>
       <div class="button-block">
-        <button id="formCancelBtn" class="formBtn" type="button">Отмена</button>
-
-      <button id="form-save-btn" class="form-btn" type="button">Сохранить</button>
-
       <button id="form-cancel-btn" class="form-btn" type="button">Отмена</button>
-
-    </form>
-
-    <div id="goal-list-section"  class="block">
-      <h1 id="list-name">Список целей</h1>
-      <div id="saved-goals"></div>
+      
+      <button id="form-save-btn" class="form-btn" type="button">Сохранить</button>
     </div>
+    </div>
+    </form>
+  
 
+    <div id="goal-list-section"  class="block-wrapper">
+      <h1 class="header">Список целей</h1>
+      <div id="saved-goals" class="block">
+
+      </div>
+    </div>
   </div>
   <script src="./index.js"></script>
 </body>
