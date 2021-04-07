@@ -1,0 +1,13 @@
+
+{
+  "scripts": {
+    "serve": "parcel index.html"
+  },
+  "dependencies": {
+    "moment": "^2.29.1"
+  },
+ 
+  "devDependencies": {
+    "parcel": "*"
+  }
+}
