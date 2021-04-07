@@ -1,1 +1,84 @@
-/* sdsdsd */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+
+body {
+    font-family: Roboto;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.block {
+    width: 50%;
+    height: 90vh;
+    border: 2px black solid;
+    padding: 30px;
+}
+
+#goalForm {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    text-align: center;
+}
+
+.formHeader {
+    font-size: 35px;
+}
+
+.block-for-inputs {
+    
+}
+
+.formLabel {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.main-input-label {
+    font-weight: 700;
+    font-size: 26px;
+}
+
+.main-input {
+    font-size: 28px;
+    font-weight: 700;
+
+}
+
+.block-for-inputs {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.formInput {
+    margin-left: 20px;
+
+}
+
+.button-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.formBtn {
+    width: 25%;
+    margin-left: 40px;
+
+}
+
+#goal-list {
+    margin: 30px;
+    text-align: center;
+}
+
+.listName {
+
+}

@@ -12,11 +12,12 @@
 </head>
 <body>
   <div class="wrapper">
-    <form id="goal-form">
+    <form id="goal-form" class="block">
       <h1 id="form-header">Накопить на мечту</h1>
-      <label class="form-label">
+      <div class="block-for-inputs"></div>
+      <label class="form-label main-input-label">
         Название цели:
-        <input id="goal-name" class="form-input" type="text" name="goal-name">
+        <input id="goal-name" class="form-input main-input" type="text" name="goal-name">
       </label>
 
       <label class="form-label">
@@ -43,6 +44,9 @@
         Ежемесячный платёж:
         <input id="monthly-payment" class="form-input" type="number" name="monthly-payment">
       </label>
+    </div>
+      <div class="button-block">
+        <button id="formCancelBtn" class="formBtn" type="button">Отмена</button>
 
       <button id="form-save-btn" class="form-btn" type="button">Сохранить</button>
 
@@ -50,7 +54,7 @@
 
     </form>
 
-    <div id="goal-list-section">
+    <div id="goal-list-section"  class="block">
       <h1 id="list-name">Список целей</h1>
       <div id="saved-goals"></div>
     </div>
