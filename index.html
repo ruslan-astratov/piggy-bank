@@ -26,7 +26,7 @@
 
       <label class="formLabel">
         Срок:
-        <input id="period" class="formInput" type="number" name="period">
+        <input id="period" class="formInput" type="text" placeholder="ГГГГ-ММ" name="period">
       </label>
 
       <label class="formLabel">
@@ -44,14 +44,15 @@
         <input id="monthlyPayment" class="formInput" type="number" name="monthlyPayment">
       </label>
 
-      <button id="formCancelBtn" class="formBtn" type="button">Отмена</button>
+      <button id="formSaveBtn" class="formBtn" type="button">Сохранить</button>
 
-      <button id="formRemoveBtn" class="formBtn" type="button">Удалить</button>
+      <button id="formCancelBtn" class="formBtn" type="button">Отмена</button>
 
     </form>
 
     <div id="goal-list">
       <h1 id="listName">Список целей</h1>
+      <div id="savedGoals"></div>
     </div>
 
   </div>
