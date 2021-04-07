@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проект Копилка</title>
+
+  <link rel="stylesheet" href="563fd50d718577864c67592ae4509f0a">
+
+  
+
+</head>
+<body>
+  <div class="wrapper">
+    <form id="goal-form">
+      <h1 id="form-header">Накопить на мечту</h1>
+      <label class="form-label">
+        Название цели:
+        <input id="goal-name" class="form-input" type="text" name="goal-name">
+      </label>
+
+      <label class="form-label">
+        Требуемая сумма:
+        <input id="sum-required" class="form-input" type="number" name="sum-required">
+      </label>
+
+      <label class="form-label">
+        Срок:
+        <input id="period" class="form-input" type="text" placeholder="ГГГГ-ММ" name="period">
+      </label>
+
+      <label class="form-label">
+        Стартовая сумма:
+        <input id="initial-sum" class="form-input" type="number" name="initial-sum">
+      </label>
+
+      <label class="form-label">
+        Процент по вкладу:
+        <input id="percent" class="form-input" type="number" name="percent">
+      </label>
+
+      <label class="form-label">
+        Ежемесячный платёж:
+        <input id="monthly-payment" class="form-input" type="number" name="monthly-payment">
+      </label>
+
+      <button id="form-save-btn" class="form-btn" type="button">Сохранить</button>
+
+      <button id="form-cancel-btn" class="form-btn" type="button">Отмена</button>
+
+    </form>
+
+    <div id="goal-list-section">
+      <h1 id="list-name">Список целей</h1>
+      <div id="saved-goals"></div>
+    </div>
+
+  </div>
+  <script src="4446f5e227c2c938d062e7ce10c1adbe"></script>
+</body>
+</html>
