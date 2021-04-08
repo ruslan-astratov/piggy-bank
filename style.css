@@ -22,6 +22,7 @@ body {
 h1 {
     color: #f05945;
     font-size: 50px;
+    text-shadow: 1px 1px 2px black;
 }
 
 .block {
@@ -38,11 +39,13 @@ h1 {
     flex-direction: column;
     margin: 30px;
     text-align: center;
-    
+    justify-content: space-between;
+    color: #495464;
 }
 
 #form-header {
     font-size: 35px;
+    text-shadow: 1px 1px 2px black;
 }
 
 .header-in-form {
@@ -83,6 +86,9 @@ h1 {
 
 .form-input {
     margin-left: 20px;
+    height: 25px;
+    border-radius: 5px;
+    border: #40394a solid 1px;
 
 }
 
@@ -94,15 +100,28 @@ h1 {
 }
 
 .form-btn {
-    width: 30%;
-    height: 30px;
-    margin-left: 40px;
+    width: 35%;
+    height: 50px;
     background-color: #A3D2CA;
+    color: #40394a;
     border-radius: 5px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 #form-save-btn {
     background-color: #f05945;
+    margin-left: 40px;
+}
+
+#form-cancel-btn:hover {
+    background-color: white;
+    color: #393e46;
+}
+
+#form-save-btn:hover {
+    background-color: white;
+    color: #f05945;
 }
 
 #goal-list-section {
