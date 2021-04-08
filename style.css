@@ -1,134 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap");
 
 body {
-    font-family: Roboto;
-    margin: 0;
-    padding: 0;
+  font-family: Roboto;
+  margin: 0;
+  padding: 0;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .block-wrapper {
-    width: 50%;
-    padding: 30px;
-    box-sizing: border-box;
-    margin: 30px;
-    text-align: center;
+  width: 50%;
+  padding: 30px;
+  box-sizing: border-box;
+  margin: 30px;
+  text-align: center;
 }
 
 h1 {
-    color: #f05945;
-    font-size: 50px;
-    text-shadow: 1px 1px 2px black;
+  color: #f05945;
+  font-size: 50px;
+  text-shadow: 1px 1px 2px black;
 }
 
 .block {
-    height: 500px;
-    border: 2px #393e46 solid;
-    border-radius: 10px;
-    background-color: #f7f3e9;
-    overflow: hidden;
-    box-sizing: border-box;
+  height: 500px;
+  border: 2px #393e46 solid;
+  border-radius: 10px;
+  background-color: #f7f3e9;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 #goal-form {
-    display: flex;
-    flex-direction: column;
-    margin: 30px;
-    text-align: center;
-    justify-content: space-between;
-    color: #495464;
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  text-align: center;
+  justify-content: space-between;
+  color: #495464;
 }
 
 #form-header {
-    font-size: 35px;
-    text-shadow: 1px 1px 2px black;
+  font-size: 35px;
+  text-shadow: 1px 1px 2px black;
 }
 
 .header-in-form {
-    background-color: #5eaaa8;
-    text-align: center;
-    font-size: 28px;
-    height: 70px;
-    margin-bottom: 20px;
-    color: #393e46;
-    padding-bottom: 20px;
+  background-color: #5eaaa8;
+  text-align: center;
+  font-size: 28px;
+  height: 70px;
+  margin-bottom: 20px;
+  color: #393e46;
+  padding-bottom: 20px;
 }
 
 .box-for-form {
-    border: 2px black solid;
+  border: 2px black solid;
 }
 
 .form-label {
-    margin-bottom: 20px;
-    margin-left: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
 }
 
 .main-input-label {
-    font-weight: 700;
-    font-size: 26px;
+  font-weight: 700;
+  font-size: 26px;
 }
 
 .main-input {
-    font-size: 28px;
-    font-weight: 700;
-
+  font-size: 28px;
+  font-weight: 700;
 }
 
 .block-for-inputs {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
 .form-input {
-    margin-left: 20px;
-    height: 25px;
-    border-radius: 5px;
-    border: #40394a solid 1px;
-
+  margin-left: 20px;
+  height: 25px;
+  border-radius: 5px;
+  border: #40394a solid 1px;
 }
 
 .button-block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
 }
 
 .form-btn {
-    width: 35%;
-    height: 50px;
-    background-color: #A3D2CA;
-    color: #40394a;
-    border-radius: 5px;
-    font-size: 20px;
-    font-weight: 700;
+  width: 35%;
+  height: 50px;
+  background-color: #a3d2ca;
+  color: #40394a;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 #form-save-btn {
-    background-color: #f05945;
-    margin-left: 40px;
+  background-color: #f05945;
+  margin-left: 40px;
 }
 
 #form-cancel-btn:hover {
-    background-color: white;
-    color: #393e46;
+  background-color: white;
+  color: #393e46;
 }
 
 #form-save-btn:hover {
-    background-color: white;
-    color: #f05945;
+  background-color: white;
+  color: #f05945;
 }
 
 #goal-list-section {
-    margin: 30px;
-    text-align: center;
+  margin: 30px;
+  text-align: center;
 }
 
 #saved-goals {
-    border: 2px black solid;
+  border: 2px black solid;
+  border-radius: 10px solid grey;
+
+  background-color: #5eaaa8;
+  min-height: 92px;
+}
+
+#list-name {
+  margin-top: 64px;
+  margin-bottom: 32px;
+}
+
+/* ---------------------------------   Стили карточки-цели (в правой части страницы) */
+.target-card {
+  border: 1px solid black;
+}
+
+/* Название цели   (например  "купить телефон") */
+.target-card-title {
+  background-color: #5eaaa8;
+}
+
+/* Скрытый блок */
+.target-card-hidden-block {
+  background: #f7f3e9;
+
+  display: none;
+}
+
+.target-card:hover .target-card-hidden-block {
+  display: block;
 }
