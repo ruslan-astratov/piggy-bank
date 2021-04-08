@@ -9,6 +9,7 @@ body {
 .wrapper {
   display: flex;
   flex-direction: row;
+  margin-top: 0;
 }
 
 .block-wrapper {
@@ -16,6 +17,7 @@ body {
   padding: 30px;
   box-sizing: border-box;
   margin: 30px;
+  margin-top: 0;
   text-align: center;
 }
 
@@ -37,34 +39,52 @@ h1 {
 #goal-form {
   display: flex;
   flex-direction: column;
-  margin: 30px;
   text-align: center;
   justify-content: space-between;
   color: #495464;
 }
 
-#form-header {
-  font-size: 35px;
-  text-shadow: 1px 1px 2px black;
-}
+
 
 .header-in-form {
   background-color: #5eaaa8;
   text-align: center;
+  box-sizing: border-box;
+  height: 90px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-size: 28px;
   height: 70px;
   margin-bottom: 20px;
   color: #393e46;
-  padding-bottom: 20px;
+  
+}
+
+h3 {
+  margin: 0;
 }
 
 .box-for-form {
   border: 2px black solid;
 }
 
-.form-label {
+.field {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+label {
+  display: inline;
   margin-left: 20px;
+  width: 200px;
+}
+
+.form-input {
+  margin-left: 20px;
+  height: 25px;
+  border-radius: 5px;
+  border: #40394a solid 1px;
 }
 
 .main-input-label {
@@ -75,19 +95,13 @@ h1 {
 .main-input {
   font-size: 28px;
   font-weight: 700;
+  height: 30px;
 }
 
 .block-for-inputs {
   display: flex;
   flex-direction: column;
   text-align: left;
-}
-
-.form-input {
-  margin-left: 20px;
-  height: 25px;
-  border-radius: 5px;
-  border: #40394a solid 1px;
 }
 
 .button-block {
@@ -123,7 +137,6 @@ h1 {
 }
 
 #goal-list-section {
-  margin: 30px;
   text-align: center;
 }
 
