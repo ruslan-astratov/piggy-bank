@@ -17,6 +17,7 @@ let monthlyPayment = document.querySelector('#monthly-payment');
 let formSaveBtn = document.querySelector('#form-save-btn');
 let formCancelBtn = document.querySelector('#form-cancel-btn');
 
+
 // Сама форма form 
 let form = document.querySelector('#goal-form');
 
@@ -114,11 +115,36 @@ function calculatedSumOfPaymant() {
   console.log("Размер ежемесячного платежа", monthlyPaymen)
 
   // Вставили в инпут результат рассчётов
-  monthlyPayment.value = monthlyPaymen
+  monthlyPayment.value = Math.round(monthlyPaymen);
 
 }
 
 
+
+let arrowToDown = document.querySelector('.arrow-to-down');
+let arrowToUp = document.querySelector('.arrow-to-up');
+let targetCardHiddenBlock = document.querySelector('.target-card-hidden-block');
+let targetCard = document.querySelector('.target-card');
+let svg = document.querySelector('svg');
+
+svg.addEventListener('click', (event) => {
+  let flag = 0;
+  if (flag === 0) {
+    flag = 1;
+    targetCardHiddenBlock.style.display = 'block';
+    arrowToDown.style.display = 'none';
+    arrowToUp.style.display = 'block';
+  } else {
+    flag = 0;
+    targetCardHiddenBlock.style.display = 'none';
+    arrowToDown.style.display = 'block';
+    arrowToUp.style.display = 'none';
+  }
+  console.log(event);
+  // targetCardHiddenBlock.style.display = 'block';
+
+
+});
 
 
 
@@ -243,8 +269,26 @@ function renderTargetInRightList(newTargetsArrayWithoutDublicates) {
     let targetHTML = `
                     <div class="target-card" data-id=${target.id}>
 
-                      <p class="target-card-title">${target.goalName}</p>
-
+                      <p class="target-card-title">${target.goalName}                                  
+                      <svg class="arrow-to-down" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                      width="15px" height="15px" viewBox="0 0 306 306" style="enable-background:new 0 0 306 306;" xml:space="preserve">
+                      <g><g id="expand-more">
+                          <polygon points="270.3,58.65 153,175.95 35.7,58.65 0,94.35 153,247.35 306,94.35 "/>
+                        </g></g>
+                      </svg>
+                      <svg class="arrow-to-up" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        width="284.929px" height="284.929px" viewBox="0 0 284.929 284.929" style="enable-background:new 0 0 284.929 284.929;"
+                        xml:space="preserve">
+                      <g>
+                        <path d="M282.082,195.285L149.028,62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665,0.953-6.567,2.856L2.856,195.285
+                          C0.95,197.191,0,199.378,0,201.853c0,2.474,0.953,4.664,2.856,6.566l14.272,14.271c1.903,1.903,4.093,2.854,6.567,2.854
+                          c2.474,0,4.664-0.951,6.567-2.854l112.204-112.202l112.208,112.209c1.902,1.903,4.093,2.848,6.563,2.848
+                          c2.478,0,4.668-0.951,6.57-2.848l14.274-14.277c1.902-1.902,2.847-4.093,2.847-6.566
+                          C284.929,199.378,283.984,197.188,282.082,195.285z"/>
+                      </g>
+                      </svg>
+                        </p> 
+                      
                       <div class="target-card-hidden-block">
 
                         <p>Необходимая сумма: ${target.sumRequired}</p>
@@ -306,6 +350,9 @@ percent.addEventListener("input", isEmptyInputs)
 formSaveBtn.addEventListener("click", saveOurTargetInTargetsArray)
 
 formCancelBtn.addEventListener("click", resetForm)
+
+
+
 
 
 

@@ -147,7 +147,13 @@ h1 {
 
   display: none;
 }
-
-.target-card:hover .target-card-hidden-block {
+/* .target-card:hover .target-card-hidden-block {
   display: block;
+} */
+.arrow-to-down {
+  margin-left: 30px;
 }
+.arrow-to-up {
+  margin-left: 200px;
+}
+
