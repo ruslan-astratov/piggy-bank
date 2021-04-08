@@ -114,17 +114,9 @@ function calculatedSumOfPaymant() {
   console.log("Размер ежемесячного платежа", monthlyPaymen)
 
   // Вставили в инпут результат рассчётов
-  monthlyPayment.value = monthlyPaymen
+  monthlyPayment.value = Number(monthlyPaymen).toFixed(2)
 
 }
-
-
-
-
-
-
-
-
 
 
 
