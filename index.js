@@ -344,7 +344,7 @@ function renderTargetInRightList(newTargetsArrayWithoutDublicates) {
                         <p>Необходимая сумма: ${target.sumRequired}</p>
                         <p>Срок: ${target.period}</p>
                         <p class="target-card-initial-sum">Стартовая сумма: ${target.initialSum}</p>
-                        <p class="target-card-percent">Процент по вкладу: ${target.percent}</p>
+                        <p class="target-card-percent">Процент по вкладу: ${target.percent} %</p>
                         <p class="target-card-monthly-payment">Ежемесячный платёж: ${target.monthlyPayment}</p>
                         <div class="target-card-row-for-buttons">
                           <button type="button" class="changeCardBtn target-card-change-btn cardBtn">Изменить</button>
