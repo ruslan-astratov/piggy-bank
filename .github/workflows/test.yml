@@ -16,8 +16,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - run: npm install
+      - run: npm run predeploy
       - run: npm run deploy
-      - run: npm test
+
+
+      # - run: npm test
 #   publish-npm:
 #     needs: build
 #     runs-on: ubuntu-latest
