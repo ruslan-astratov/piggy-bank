@@ -317,6 +317,7 @@ function renderTargetInRightList(newTargetsArrayWithoutDublicates) {
 // Функция, которая при нажатии на кнопку ОТМЕНА  очищает форму
 function resetForm() {
   form.reset()
+  activeCardDataID = null;
 }
 
 
