@@ -393,15 +393,3 @@ formSaveBtn.addEventListener("click", saveOurTargetInTargetsArray)
 formCancelBtn.addEventListener("click", resetForm)
 
 savedGoals.addEventListener("click", expandСollapse)
-
-
-
-
-
-
-
-
-
-
-
-

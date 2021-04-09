@@ -4,6 +4,7 @@ body {
   font-family: Roboto;
   margin: 0;
   padding: 0;
+  min-width: 360px;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ Desktop Version ~~~~~~~~~~~~~~~~ */
@@ -26,12 +27,12 @@ body {
 h1 {
   color: #f05945;
   font-size: 50px;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 1px 3px 4px lightgrey;
 }
 
 .block {
   height: 500px;
-  border: 2px #393e46 solid;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   background-color: #f7f3e9;
   overflow: hidden;
@@ -64,7 +65,7 @@ h3 {
 }
 
 .box-for-form {
-  border: 2px black solid;
+  /* border: 2px black solid; */
 }
 
 .field {
@@ -83,7 +84,7 @@ label {
   margin-left: 20px;
   height: 25px;
   border-radius: 5px;
-  border: #40394a solid 1px;
+  border: lightgrey solid 1px;
 }
 
 .main-input-label {
@@ -95,6 +96,9 @@ label {
   font-size: 28px;
   font-weight: 700;
   height: 30px;
+  width: 50%;
+  margin-right: 10px;
+  box-sizing: border-box;
 }
 
 .block-for-inputs {
@@ -117,15 +121,17 @@ label {
 .form-btn {
   width: 35%;
   height: 50px;
-  background-color: #a3d2ca;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.25);
+  background-color: #f05945;
   color: #40394a;
   border-radius: 5px;
+  border: none;
   font-size: 20px;
   font-weight: 700;
 }
 
 #form-save-btn {
-  background-color: #f05945;
+  background-color: #a3d2ca;
   margin-left: 40px;
 }
 
@@ -136,7 +142,7 @@ label {
 
 #form-save-btn:hover {
   background-color: white;
-  color: #f05945;
+  color: #5eaaa8;
 }
 
 #goal-list-section {
@@ -149,7 +155,7 @@ label {
 
 /* ---------------------------------   Стили карточки-цели (в правой части страницы) */
 .target-card {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 5px;
   width: 95%;
   min-height: 50px;
@@ -157,14 +163,20 @@ label {
   margin-left: auto;
   margin-bottom: 15px;
   background-color: #5eaaa8;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
 }
 
 /* Название цели   (например  "купить телефон") */
 .target-card-title {
   font-size: 28px;
+  font-weight: 700;
   margin: 0;
   margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
   background-color: #5eaaa8;
+  text-align: left;
   width: 100%;
 }
 
@@ -174,7 +186,7 @@ label {
   display: none;
   text-align: left;
   padding-left: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .target-card-row-for-buttons {
@@ -183,11 +195,18 @@ label {
 }
 
 .cardBtn {
+  margin-top: 20px;
   width: 40%;
   height: 35px;
   border-radius: 5px;
   font-weight: 700;
   font-size: 16px;
+  border: none;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.25);
+}
+
+.cardBtn:hover {
+  background-color: #f7f3e9;
 }
 
 .changeCardBtn {
@@ -195,9 +214,18 @@ label {
   background-color: #a3d2ca;
 }
 
+.changeCardBtn:hover {
+  color: #5eaaa8;
+}
+
 .deleteCardBtn {
   background-color: #f05945;
 }
+
+.deleteCardBtn:hover {
+  color: #f05945;
+}
+
 
 .target-card-title-and-arrow {
   display: flex;
@@ -231,7 +259,7 @@ label {
 
 /* ~~~~~~~~~~~~~~~~~ Mobile version ~~~~~~~~~~~~~~~~~~*/
 
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -253,14 +281,14 @@ label {
   h1 {
     color: #f05945;
     font-size: 40px;
-    text-shadow: 1px 1px 2px black;
     margin: 10px;
+    text-shadow: 1px 3px 4px lightgrey;
   }
 
   .block {
     width: 100%;
     height: 470px;
-    border: 2px #393e46 solid;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     background-color: #f7f3e9;
     overflow: hidden;
@@ -295,6 +323,10 @@ label {
     justify-content: flex-start;
   }
 
+  .field-main {
+    justify-content: left;
+  }
+
   label {
     display: inline;
     margin-left: 20px;
@@ -318,9 +350,9 @@ label {
     font-size: 20px;
     font-weight: 700;
     height: 30px;
-    margin-left: auto;
+    margin-left: 20px;
     margin-right: auto;
-    width: 90%;
+    width: 93%;
   }
 
   .button-block {
@@ -333,9 +365,11 @@ label {
   .form-btn {
     width: 35%;
     height: 40px;
-    background-color: #a3d2ca;
+    background-color: #f05945;
     color: #40394a;
     border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.25);
     font-size: 15px;
     font-weight: 700;
   }
