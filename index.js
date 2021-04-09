@@ -67,8 +67,10 @@ function isEmptyInputs() {
   }
 
   // В противном случае, если хотя бы один из инпутов НЕ пустой, то ничего не срабатывает
-  else {
+  else if ( goalName.value.trim() !== "" || sumRequired.value.trim() !== "" || period.value.trim() !== "" || period.value.length >= 6 || initialSum.value.trim() !== ""|| 
+  percent.value.trim() !== "") {
 
+    monthlyPayment.value = "";
     console.log("Одно из полей пустое")
 
   }
@@ -80,7 +82,8 @@ function isEmptyInputs() {
 
 
 
-// Функция, которая берёт значения 4 инпутов (требуемая сумма, период, начальная сумма, процент)   и на их основе рассчитывает размер ежемесячного платежа и выводит его в инпут monthlyPayment
+// Функция, которая берёт значения 4 инпутов (требуемая сумма, период, начальная сумма, процент)   и на их основе рассчитывает 
+// размер ежемесячного платежа и выводит его в инпут monthlyPayment
 function calculatedSumOfPaymant() {
 
 
@@ -146,19 +149,32 @@ function expandСollapse (event) {
 
 
 
+function removeGoal(dataId2) {
+  let newArray = arrForOurSaveTargets.filter((card2) => {
+      if (card2.id != dataId2) {
+          return card2;     
+       }
+  })
+  arrForOurSaveTargets = newArray;
+  renderTargetInRightList(arrForOurSaveTargets);
+};
 
+function updateGoal(dataId) {
+  // в массиве найти элемент у к-го эл-т равен data-id
+  activeCardDataID = dataId;
+  let targetCard = arrForOurSaveTargets.find((card) => {
+    if (card.id == dataId) { 
+    return card;
+    }
+  })
 
-
-
-
-
-
-
-
-
-
-
-
+  goalName.value = targetCard.goalName;
+  sumRequired.value = targetCard.sumRequired;
+  period.value = targetCard.period;
+  initialSum.value = targetCard.initialSum;
+  percent.value = targetCard.percent;
+  monthlyPayment.value = targetCard.monthlyPayment;
+}
 
 
 
@@ -214,54 +230,6 @@ function saveOurTargetInTargetsArray() {
     // А здесь отработает функция, которая смотрит на массив-целей, перебирает его и для каждой цели рисует карточку  (в правой части экрана)
     renderTargetInRightList(newTargetsArrayWithoutDublicates)
 
-    // вывод информации из сохранённой цели в форму по клику на кнопке "Изменить"
-    //Функция изменения цели
-    function updateGoal(dataId) {
-        // в массиве найти элемент у к-го эл-т равен data-id
-      activeCardDataID = dataId;
-       let targetCard = arrForOurSaveTargets.find((card) => {
-            if (card.id == dataId) { 
-            return card;
-            }
-       })
-
-       goalName.value = targetCard.goalName;
-       sumRequired.value = targetCard.sumRequired;
-       period.value = targetCard.period;
-       initialSum.value = targetCard.initialSum;
-       percent.value = targetCard.percent;
-       monthlyPayment.value = targetCard.monthlyPayment;
-    }
-    
-    let goalCards = document.querySelectorAll('.target-card');
-    
-    goalCards.forEach((card) => {
-        let changeBtn = card.querySelector('.target-card-change-btn')
-        let dataId = card.dataset.id
-        console.log(dataId)
-    
-        changeBtn.addEventListener("click", () => updateGoal(dataId));
-    })
-
-    // получить id обертки элемента
-    //отфильтровать массив и убрать удаленный элемент
-    //перерисовать массив
-    function removeGoal(dataId2) {
-        
-        let newArray = arrForOurSaveTargets.filter((card2) => {
-            if (card2.id != dataId2) {
-                return card2;     
-             }
-        })
-        arrForOurSaveTargets = newArray;
-        renderTargetInRightList(arrForOurSaveTargets);
-    }
-
-    goalCards.forEach((card2) => {
-        let removeBtn = card2.querySelector('.target-card-remove-btn');
-        let dataId2 = card2.dataset.id
-        removeBtn.addEventListener("click", () => removeGoal(dataId2))
-    })
   }
 }
 
@@ -359,9 +327,21 @@ function renderTargetInRightList(newTargetsArrayWithoutDublicates) {
     // Теперь эту разметку карточки нужно физически вставить на страницу -->  в список наших целей
     targetsList.insertAdjacentHTML("beforeend", targetHTML)
 
+  })
 
-  } )
+  document.querySelectorAll('.target-card').forEach((card2) => {
+    let removeBtn = card2.querySelector('.target-card-remove-btn');
+    let dataId2 = card2.dataset.id
+    removeBtn.addEventListener("click", () => removeGoal(dataId2))
+  })
 
+  document.querySelectorAll('.target-card').forEach((card) => {
+    let changeBtn = card.querySelector('.target-card-change-btn')
+    let dataId = card.dataset.id
+    console.log(dataId)
+  
+    changeBtn.addEventListener("click", () => updateGoal(dataId));
+  })
 }
 
 
