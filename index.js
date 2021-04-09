@@ -95,6 +95,13 @@ function isEmptyInputs() {
     calculatedSumOfPaymant()
   }
 
+  // В противном случае, если хотя бы один из инпутов НЕ пустой, то ничего не срабатывает
+  else if ( goalName.value.trim() !== "" || sumRequired.value.trim() !== "" || period.value.trim() !== "" || period.value.length >= 6 || initialSum.value.trim() !== ""|| 
+  percent.value.trim() !== "") {
+    monthlyPayment.value = "";
+    console.log("Одно из полей пустое")
+  }
+  
   // В противном случае, если мы впервые начали что-то вводить в инпут, а затем из этого инпута стёрли всё что ввели, плашка "Пожалуйста, заполните все поля"    ДОЛЖНА  пропасть
   else if(goalName.value.trim() == "" && sumRequired.value.trim() == "" && period.value.trim() == "" && initialSum.value.trim() == "" && percent.value.trim() == "") {
 

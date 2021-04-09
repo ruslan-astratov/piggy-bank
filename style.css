@@ -392,9 +392,9 @@ label {
 /* Сообщение о незаполненных полях (в случае, если хотя бы одно из полей пустое) */
 .error-message2 {
   position: absolute;
-  top: 41px;
-  left: 151px;
+  top: 28px;
+  left: 240px;
   color: red;
-
   visibility: hidden;
+
 }
