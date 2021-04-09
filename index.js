@@ -3,7 +3,7 @@ import moment from 'moment';
 // console.log(moment().format())
 
 // Наш массив для сохранённых целей.  Сюда будут попадать все наши сохранённые цели    (При клике на кнопку "Сохранить" в форме)
-const arrForOurSaveTargets = []
+let arrForOurSaveTargets = []
 
 
 
@@ -16,6 +16,7 @@ let percent = document.querySelector('#percent');
 let monthlyPayment = document.querySelector('#monthly-payment');
 let formSaveBtn = document.querySelector('#form-save-btn');
 let formCancelBtn = document.querySelector('#form-cancel-btn');
+let activeCardDataID = null;
 
 // Сама форма form 
 let form = document.querySelector('#goal-form');
@@ -33,10 +34,10 @@ let targetsList = document.querySelector('#saved-goals');
 // Написать функцию  которая возвращает количество месяцев от текущего месяца  до   месяца, который ввёл пользователь
 function calcMonths() {
 
-    let start =  moment().format('YYYY-MM')
+    let start =  moment().format('MM-YYYY')
     let end = period.value;
-    let a = moment(start, "YYYY-MM");
-    let b = moment(end, "YYYY-MM");
+    let a = moment(start, "MM-YYYY");
+    let b = moment(end, "MM-YYYY");
     let  months = b.diff(a, 'month');
 
     if (months > 0) {
@@ -147,10 +148,17 @@ function saveOurTargetInTargetsArray() {
 
     }
 
+    if(activeCardDataID !== null) {
+      arrForOurSaveTargets = arrForOurSaveTargets.filter((card2) => {
+        if (card2.id != activeCardDataID) {
+            return card2;     
+        }
+      })
+      activeCardDataID = null;
+    }
+
     // .. и теперь, когда мы сформировали объект с данными по нашей цели,  мы можем запушить этот объект в массив (где будут храниться ВСЕ наши цели)
     arrForOurSaveTargets.push(targetObj)
-
-
 
     // А вот здесь будет срабатывать функция, которая удаляет из массива-целей   ДУБЛИКАТЫ
     let newTargetsArrayWithoutDublicates = removeDuplicates(arrForOurSaveTargets)
@@ -164,9 +172,55 @@ function saveOurTargetInTargetsArray() {
     // А здесь отработает функция, которая смотрит на массив-целей, перебирает его и для каждой цели рисует карточку  (в правой части экрана)
     renderTargetInRightList(newTargetsArrayWithoutDublicates)
 
+    // вывод информации из сохранённой цели в форму по клику на кнопке "Изменить"
+    //Функция изменения цели
+    function updateGoal(dataId) {
+        // в массиве найти элемент у к-го эл-т равен data-id
+      activeCardDataID = dataId;
+       let targetCard = arrForOurSaveTargets.find((card) => {
+            if (card.id == dataId) { 
+            return card;
+            }
+       })
+
+       goalName.value = targetCard.goalName;
+       sumRequired.value = targetCard.sumRequired;
+       period.value = targetCard.period;
+       initialSum.value = targetCard.initialSum;
+       percent.value = targetCard.percent;
+       monthlyPayment.value = targetCard.monthlyPayment;
+    }
+    
+    let goalCards = document.querySelectorAll('.target-card');
+    
+    goalCards.forEach((card) => {
+        let changeBtn = card.querySelector('.target-card-change-btn')
+        let dataId = card.dataset.id
+        console.log(dataId)
+    
+        changeBtn.addEventListener("click", () => updateGoal(dataId));
+    })
+
+    // получить id обертки элемента
+    //отфильтровать массив и убрать удаленный элемент
+    //перерисовать массив
+    function removeGoal(dataId2) {
+        
+        let newArray = arrForOurSaveTargets.filter((card2) => {
+            if (card2.id != dataId2) {
+                return card2;     
+             }
+        })
+        arrForOurSaveTargets = newArray;
+        renderTargetInRightList(arrForOurSaveTargets);
+    }
+
+    goalCards.forEach((card2) => {
+        let removeBtn = card2.querySelector('.target-card-remove-btn');
+        let dataId2 = card2.dataset.id
+        removeBtn.addEventListener("click", () => removeGoal(dataId2))
+    })
   }
-
-
 }
 
 
@@ -231,37 +285,28 @@ function renderTargetInRightList(newTargetsArrayWithoutDublicates) {
   
 
   newTargetsArrayWithoutDublicates.forEach( target => {
-
     let targetHTML = `
                     <div class="target-card" data-id=${target.id}>
-
                       <p class="target-card-title">${target.goalName}</p>
-
                       <div class="target-card-hidden-block">
-
                         <p>Необходимая сумма: ${target.sumRequired}</p>
-
                         <p>Срок: ${target.period}</p>
-
-                        <p>Процент по вкладу: ${target.percent}</p>
-
-                        <p>Ежемесячный платёж: ${target.monthlyPayment}</p>
-
+                        <p class="target-card-initial-sum">Стартовая сумма: ${target.initialSum}</p>
+                        <p class="target-card-percent">Процент по вкладу: ${target.percent}</p>
+                        <p class="target-card-monthly-payment">Ежемесячный платёж: ${target.monthlyPayment}</p>
                         <div class="target-card-row-for-buttons">
-                          <button type="button" class="changeCardBtn cardBtn">Изменить</button>
-                          <button type="button" class="deleteCardBtn cardBtn">Удалить</button>
+                          <button type="button" class="changeCardBtn target-card-change-btn cardBtn">Изменить</button>
+                          <button type="button" class="deleteCardBtn target-card-remove-btn cardBtn">Удалить</button>
                         </div>
                         
                       </div>
                       <!-- // Скрытый блок, который появляется-выезжает   при наведении на  карточку -->
-
-
-                    </div>
-                    `
+                    </div>`
+    
+        
 
     // Теперь эту разметку карточки нужно физически вставить на страницу -->  в список наших целей
     targetsList.insertAdjacentHTML("beforeend", targetHTML)
-
 
 
   } )
@@ -269,13 +314,10 @@ function renderTargetInRightList(newTargetsArrayWithoutDublicates) {
 }
 
 
-
-
-
-
 // Функция, которая при нажатии на кнопку ОТМЕНА  очищает форму
 function resetForm() {
   form.reset()
+  activeCardDataID = null;
 }
 
 
@@ -298,6 +340,12 @@ percent.addEventListener("input", isEmptyInputs)
 formSaveBtn.addEventListener("click", saveOurTargetInTargetsArray)
 
 formCancelBtn.addEventListener("click", resetForm)
+
+
+
+
+
+
 
 
 
