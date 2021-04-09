@@ -2,7 +2,9 @@
   "scripts": {
     "serve": "parcel index.html",
     "start": "parcel ./*.html",
-    "predeploy": "rm -rf dist && parcel build ./*.html --public-url https://ruslan-astratov.github.io/piggy-bank/",
+    "clean": "rm -rf dist",
+    "build": "parcel build ./*.html --public-url https://ruslan-astratov.github.io/piggy-bank/",
+    "predeploy": "npm run clean && npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
