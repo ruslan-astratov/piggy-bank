@@ -17,6 +17,8 @@ let monthlyPayment = document.querySelector('#monthly-payment');
 let formSaveBtn = document.querySelector('#form-save-btn');
 let formCancelBtn = document.querySelector('#form-cancel-btn');
 let activeCardDataID = null;
+let savedGoals = document.querySelector('#saved-goals');
+
 
 // Сама форма form 
 let form = document.querySelector('#goal-form');
@@ -117,7 +119,47 @@ function calculatedSumOfPaymant() {
   // Вставили в инпут результат рассчётов
   monthlyPayment.value = Number(monthlyPaymen).toFixed(2)
 
-}
+};
+
+function expandСollapse (event) {
+  if ((event.target.closest('.arrow')) && (event.target.closest('.arrow').dataset.collapsed === 'false')) {
+
+    let cards = event.currentTarget.querySelectorAll('.target-card');
+    cards.forEach((card)=> {
+      card.querySelector('.arrow').dataset.collapsed = 'false';
+      card.querySelector('.target-card-hidden-block').style.display = 'none';
+      card.querySelector('.arrow').style.transform = 'rotate(360deg)';
+    });
+
+    event.target.closest('.arrow').dataset.collapsed = 'true';
+    event.target.closest('.target-card').querySelector('.target-card-hidden-block').style.display = 'block';
+    event.target.closest('.arrow').style.transform = 'rotate(180deg)';
+
+  } else if ((event.target.closest('.arrow')) && (event.target.closest('.arrow').dataset.collapsed === 'true')) {
+
+    event.target.closest('.arrow').dataset.collapsed = 'false';
+    event.target.closest('.target-card').querySelector('.target-card-hidden-block').style.display = 'none';
+    event.target.closest('.arrow').style.transform = 'rotate(360deg)';
+
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -287,7 +329,17 @@ function renderTargetInRightList(newTargetsArrayWithoutDublicates) {
   newTargetsArrayWithoutDublicates.forEach( target => {
     let targetHTML = `
                     <div class="target-card" data-id=${target.id}>
-                      <p class="target-card-title">${target.goalName}</p>
+                      <div class="target-card-title-and-arrow">
+                        <p class="target-card-title">${target.goalName}</p>
+                        <div class="arrow" data-collapsed="false">
+                          <svg class="arrow-to-down" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                          width="15px" height="15px" viewBox="0 0 306 306" style="enable-background:new 0 0 306 306;" xml:space="preserve">
+                          <g><g id="expand-more">
+                              <polygon points="270.3,58.65 153,175.95 35.7,58.65 0,94.35 153,247.35 306,94.35 "/>
+                            </g></g>
+                          </svg>
+                        </div>
+                      </div>
                       <div class="target-card-hidden-block">
                         <p>Необходимая сумма: ${target.sumRequired}</p>
                         <p>Срок: ${target.period}</p>
@@ -298,7 +350,6 @@ function renderTargetInRightList(newTargetsArrayWithoutDublicates) {
                           <button type="button" class="changeCardBtn target-card-change-btn cardBtn">Изменить</button>
                           <button type="button" class="deleteCardBtn target-card-remove-btn cardBtn">Удалить</button>
                         </div>
-                        
                       </div>
                       <!-- // Скрытый блок, который появляется-выезжает   при наведении на  карточку -->
                     </div>`
@@ -340,6 +391,9 @@ percent.addEventListener("input", isEmptyInputs)
 formSaveBtn.addEventListener("click", saveOurTargetInTargetsArray)
 
 formCancelBtn.addEventListener("click", resetForm)
+
+savedGoals.addEventListener("click", expandСollapse)
+
 
 
 
