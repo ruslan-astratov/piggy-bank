@@ -16,6 +16,7 @@ let percent = document.querySelector('#percent');
 let monthlyPayment = document.querySelector('#monthly-payment');
 let formSaveBtn = document.querySelector('#form-save-btn');
 let formCancelBtn = document.querySelector('#form-cancel-btn');
+let activeCardDataID = null;
 
 // Сама форма form 
 let form = document.querySelector('#goal-form');
@@ -147,10 +148,17 @@ function saveOurTargetInTargetsArray() {
 
     }
 
+    if(activeCardDataID !== null) {
+      arrForOurSaveTargets = arrForOurSaveTargets.filter((card2) => {
+        if (card2.id != activeCardDataID) {
+            return card2;     
+        }
+      })
+      activeCardDataID = null;
+    }
+
     // .. и теперь, когда мы сформировали объект с данными по нашей цели,  мы можем запушить этот объект в массив (где будут храниться ВСЕ наши цели)
     arrForOurSaveTargets.push(targetObj)
-
-
 
     // А вот здесь будет срабатывать функция, которая удаляет из массива-целей   ДУБЛИКАТЫ
     let newTargetsArrayWithoutDublicates = removeDuplicates(arrForOurSaveTargets)
@@ -168,7 +176,7 @@ function saveOurTargetInTargetsArray() {
     //Функция изменения цели
     function updateGoal(dataId) {
         // в массиве найти элемент у к-го эл-т равен data-id
-       
+      activeCardDataID = dataId;
        let targetCard = arrForOurSaveTargets.find((card) => {
             if (card.id == dataId) { 
             return card;
@@ -301,14 +309,9 @@ function renderTargetInRightList(newTargetsArrayWithoutDublicates) {
     targetsList.insertAdjacentHTML("beforeend", targetHTML)
 
 
-
   } )
 
 }
-
-
-
-
 
 
 // Функция, которая при нажатии на кнопку ОТМЕНА  очищает форму
