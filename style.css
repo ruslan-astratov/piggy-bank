@@ -69,6 +69,7 @@ h3 {
 }
 
 .field {
+  position: relative;
   margin-bottom: 20px;
   display: flex;
   justify-content: flex-start;
@@ -227,7 +228,6 @@ label {
   color: #f05945;
 }
 
-
 .target-card-title-and-arrow {
   display: flex;
   justify-content: center;
@@ -376,6 +376,25 @@ label {
   }
 }
 
+/* Сообщения об ошибках.   Сообщения , которые появляются при вводе невалидных данных  */
 
+/* Сообщение о неверно введённой дате */
+.error-message1 {
+  position: absolute;
+  top: 28px;
+  left: 241px;
+  /* background: red; */
+  color: red;
 
+  visibility: hidden;
+}
 
+/* Сообщение о незаполненных полях (в случае, если хотя бы одно из полей пустое) */
+.error-message2 {
+  position: absolute;
+  top: 41px;
+  left: 151px;
+  color: red;
+
+  visibility: hidden;
+}
