@@ -133,6 +133,7 @@ label {
   border: none;
   font-size: 20px;
   font-weight: 700;
+  transition: all 0.4s ease;
 }
 
 .form-btn {
@@ -147,11 +148,13 @@ label {
 #form-cancel-btn:hover {
   background-color: white;
   color: #393e46;
+  cursor: pointer;
 }
 
 #form-save-btn:hover {
   background-color: white;
   color: #5eaaa8;
+  cursor: pointer;
 }
 
 #goal-list-section {
@@ -226,6 +229,8 @@ label {
 .changeCardBtn {
   margin-right: 20px;
   background-color: #a3d2ca;
+  transition: 0.4s all ease;
+  cursor: pointer;
 }
 
 .changeCardBtn:hover {
@@ -234,6 +239,9 @@ label {
 
 .deleteCardBtn {
   background-color: #f05945;
+  transition: 0.4s all ease;
+  cursor: pointer;
+
 }
 
 .deleteCardBtn:hover {
@@ -385,6 +393,7 @@ label {
     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.25);
     font-size: 15px;
     font-weight: 700;
+    cursor: pointer;
   }
 }
 
