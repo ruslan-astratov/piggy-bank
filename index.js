@@ -20,6 +20,12 @@ let activeCardDataID = null;
 let savedGoals = document.querySelector('#saved-goals');
 
 
+// Спаны с сообщениями об ошибках при вводе данных
+let spanErrorTime = document.querySelector('#error-message1');
+
+let spanErrorEmptyInputs = document.querySelector('#error-message2');
+
+
 // Сама форма form 
 let form = document.querySelector('#goal-form');
 
@@ -44,46 +50,105 @@ function calcMonths() {
 
     if (months > 0) {
         console.log(months) 
+        // spanErrorTime.style.visibility = "hidden"
+
         return months;
     } else {
-        alert('Введите корректную дату')
+        // spanErrorTime.style.visibility = "visible"
+        // alert('Введите корректную актуальную дату ')
     }  
+}
+
+// Проверяет - действительно ли пользователь ввёл корректную дату (обозримое будущее)
+function isCorrectDate() {
+
+  let start =  moment().format('MM-YYYY')
+  let end = period.value;
+  let a = moment(start, "MM-YYYY");
+  let b = moment(end, "MM-YYYY");
+  let  months = b.diff(a, 'month');
+
+  if (months > 0) {
+      return true;
+  } else {
+    return false;
+
+  }  
 }
 
 
 
 
-// Функция, которая проверяет - заполнены ли все 5 инпутов. Функция срабатывает при изменении в каждом из пяти инпутов
+// Функция, которая проверяет - заполнены ли все 5 инпутов. Функция срабатывает   при каждом  ВВОДЕ данных    в  ЛЮБОЙ  из пяти инпутов
 function isEmptyInputs() {
 
-  if( goalName.value.trim() !== "" && sumRequired.value.trim() !== "" && period.value.trim() !== "" && period.value.length >= 6 && initialSum.value.trim() !== ""&& 
-      percent.value.trim() !== "") {
+  // Когда мы только начинаем что-то вводить ,  в самом низу формы  должна  появиться  плашка "Пожалуйста, заполните все поля"   
+  spanErrorEmptyInputs.style.visibility = "visible"
 
-    console.log("Все поля заполнены" )
+  if( goalName.value.trim() !== "" && sumRequired.value.trim() !== "" && period.value.trim() !== "" && period.value.length >= 6 && initialSum.value.trim() !== ""&& percent.value.trim() !== "" ) {
 
+  spanErrorEmptyInputs.style.visibility = "hidden"
+
+    // console.log("Все поля заполнены" )
 
     // Теперь здесь запускаем функцию , которая РАССЧИТЫВАЕТ размер ежемесячного пополнения   и  ВЫВОДИТ его , как результат,   в инпут   monthlyPayment
     calculatedSumOfPaymant()
   }
 
-  // В противном случае, если хотя бы один из инпутов НЕ пустой, то ничего не срабатывает
-  else if ( goalName.value.trim() !== "" || sumRequired.value.trim() !== "" || period.value.trim() !== "" || period.value.length >= 6 || initialSum.value.trim() !== ""|| 
-  percent.value.trim() !== "") {
+  // В противном случае, если мы впервые начали что-то вводить в инпут, а затем из этого инпута стёрли всё что ввели, плашка "Пожалуйста, заполните все поля"    ДОЛЖНА  пропасть
+  else if(goalName.value.trim() == "" && sumRequired.value.trim() == "" && period.value.trim() == "" && initialSum.value.trim() == "" && percent.value.trim() == "") {
 
-    monthlyPayment.value = "";
-    console.log("Одно из полей пустое")
-
+    spanErrorEmptyInputs.style.visibility = "hidden"
+    spanErrorTime.style.visibility = "hidden"
+  
   }
 
 }
 
 
 
+// Функция, которая работает  ТОЛЬКО   с  инпутом  "Срок:".  Функция, проверяет введённое пользователем значение на соответствие формату ММ-ГГГГ
+function validationTime(event) {
+
+  // // При каждом вводе проверяем - корректная ли дата
+  // let isCorrectDate = isCorrectDate()
+
+  let reg = /((0|1)[1-9]|10)-202[1-9]/
+
+  // Когда мы ввели ДАТУ в корректном формате  ММ-ГГГГ, нужно проверить - соответствует ли дата условию "обозримое будущее"
+  if(reg.test(event.target.value) && event.target.value.length == 7) {
+
+      // При каждом вводе проверяем - корректная ли дата
+    let isCorrectDat = isCorrectDate()
+
+    if(isCorrectDat) {
+      console.log("Соответствует")
+      spanErrorTime.style.visibility = "hidden"
+    } else {
+      spanErrorTime.style.visibility = "visible"
+
+    }
+
+  }
 
 
+  else if(event.target.value == "") {
 
-// Функция, которая берёт значения 4 инпутов (требуемая сумма, период, начальная сумма, процент)   и на их основе рассчитывает 
-// размер ежемесячного платежа и выводит его в инпут monthlyPayment
+    spanErrorTime.style.visibility = "hidden"
+
+  }
+
+  // Когда мы ТОЛЬКО начали что то вводить в инпут СРОК
+  else {
+    spanErrorTime.style.visibility = "visible"
+  }
+
+
+}
+
+
+// Когда 4 полей заполнены
+// Функция берёт значения 4 инпутов (требуемая сумма, период, начальная сумма, процент)   и на их основе рассчитывает размер ежемесячного платежа и выводит его в инпут monthlyPayment
 function calculatedSumOfPaymant() {
 
 
@@ -363,6 +428,8 @@ goalName.addEventListener("input", isEmptyInputs)
 sumRequired.addEventListener("input", isEmptyInputs)
 
 period.addEventListener("input", isEmptyInputs)
+
+period.addEventListener("input", validationTime)
 
 initialSum.addEventListener("input", isEmptyInputs)
 
