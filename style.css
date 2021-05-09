@@ -64,10 +64,6 @@ h3 {
   margin: 0;
 }
 
-.box-for-form {
-  /* border: 2px black solid; */
-}
-
 .field {
   position: relative;
   margin-bottom: 20px;
@@ -166,9 +162,7 @@ label {
   overflow-y: auto;
 }
 
-/* ---------------------------------   Стили карточки-цели (в правой части страницы) */
 .target-card {
-  /* border: 1px solid black; */
   border-radius: 5px;
   width: 95%;
   min-height: 50px;
@@ -180,7 +174,6 @@ label {
   overflow: hidden;
 }
 
-/* Название цели   (например  "купить телефон") */
 .target-card-title {
   font-size: 28px;
   font-weight: 700;
@@ -193,7 +186,7 @@ label {
   width: 100%;
 }
 
-/* Скрытый блок */
+/* Hidden block */
 .target-card-hidden-block {
   background: white;
   display: none;
@@ -397,25 +390,18 @@ label {
   }
 }
 
-/* Сообщения об ошибках.   Сообщения , которые появляются при вводе невалидных данных  */
-
-/* Сообщение о неверно введённой дате */
 .error-message1 {
   position: absolute;
   top: 28px;
   left: 241px;
-  /* background: red; */
   color: red;
-
   visibility: hidden;
 }
 
-/* Сообщение о незаполненных полях (в случае, если хотя бы одно из полей пустое) */
 .error-message2 {
   position: absolute;
   top: 28px;
   left: 240px;
   color: red;
   visibility: hidden;
-
 }
